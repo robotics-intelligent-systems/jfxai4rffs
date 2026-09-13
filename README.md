@@ -1,444 +1,444 @@
-# jfxai4rffs — Arquitectura de IA, simulación háptica y formación profesional
+# jfxai4rffs — AI Integration Architecture, Haptic Simulation, and Professional Training
 
-**Robotics Intelligent Systems · Propuesta técnica y académica · Versión 1.0 · 13 de septiembre de 2026**
+**Robotics Intelligent Systems · Consolidated technical and academic proposal · Version 1.0, English edition · September 13, 2026**
 
-**Repositorio de referencia:** [robotics-intelligent-systems/jfxai4rffs](https://github.com/robotics-intelligent-systems/jfxai4rffs). Revisión consultada: `8f8524616b3c07108f7b9f8255ac0cc9f5308e00`.
+**Reference repository:** [robotics-intelligent-systems/jfxai4rffs](https://github.com/robotics-intelligent-systems/jfxai4rffs). Reviewed revision: `8f8524616b3c07108f7b9f8255ac0cc9f5308e00`.
 
-**Entregables:** esta propuesta editable y `jfxai4rffs-arquitectura-ia-haptica.drawio`, con cuatro pestañas: arquitectura integral, simulador háptico, formación profesional y evolución del MVP. Las decisiones, horas, objetivos de rendimiento y plazos que siguen son propuestas de diseño; no representan una implementación ya disponible ni una acreditación obtenida.
+**Scope of this consolidated edition:** the software compendium, AI integration architecture, virtual haptic firefighting simulator, professional curricula, verification requirements, and implementation roadmap are brought together in this document. The companion file, `jfxai4rffs-ai-haptic-architecture-EN.drawio`, contains four editable tabs: integrated architecture, haptic simulator, professional training, and MVP evolution. The decisions, training hours, performance targets, and schedules below are design proposals; they do not describe an existing implementation or an accreditation already obtained. This English edition preserves the technical and academic scope of the Spanish proposal and the sources reviewed for that proposal.
 
-## 1. Propuesta ejecutiva
+## 1. Executive Proposal
 
-Evolucionar **AI-Powered Robotic Fire Fighting Platform** hacia una plataforma abierta que integre prevención de incendios, apoyo a operadores de robots y drones, entrenamiento inmersivo y evaluación profesional. El producto combinará un gemelo digital del recinto, percepción multimodal, un asistente de IA con consulta documental, una estación de realidad virtual con háptica y un sistema de gestión del aprendizaje.
+Evolve the **AI-Powered Robotic Fire Fighting Platform** into an open platform integrating fire prevention, support for robot and drone operators, immersive training, and professional assessment. The product will combine a facility digital twin, multimodal perception, an AI assistant with document retrieval, a virtual reality station with haptics, and a learning management system.
 
-El primer producto será un **centro de entrenamiento y apoyo a decisiones que funcione en red local**. Permitirá ensayar incidentes en instalaciones comerciales, industriales y logísticas; registrar actuaciones; explicar errores con evidencia; y entrenar la coordinación entre seguridad privada, brigadas internas y servicios de emergencia.
+The initial product will be a **training and decision-support center that operates on a local network**. It will support incident exercises in commercial, industrial, and logistics facilities; record participant actions; explain errors using evidence; and train coordination between private security personnel, internal fire brigades, and emergency services.
 
-La IA propondrá escenarios, recuperará procedimientos y elaborará borradores de informes. Las decisiones sobre intervención y la evaluación final corresponderán a profesionales responsables. Los controladores de movimiento y fuerza tendrán límites verificables independientes del modelo de lenguaje.
+AI will propose scenarios, retrieve procedures, and draft reports. Responsible professionals will retain authority over intervention decisions and final assessment. Motion and force controllers will have verifiable limits independent of the language model.
 
-| Resultado | Contenido propuesto |
+| Deliverable | Proposed content |
 |---|---|
-| Plataforma de integración | ROS 2, adaptadores del compendio, servicios de IA, datos y consola de instructor |
-| Simulador | Godot/OpenXR, escenas de incendio basadas en FDS, instrumentos físicos y dos niveles de háptica |
-| Programa profesional | 240 horas de seguridad privada, prevención, tecnología y coordinación de emergencias |
-| Curso avanzado | 120 horas adicionales de entrenamiento contra incendios con simulación háptica |
-| Piloto de software | 16 semanas, dos estaciones XR, tres escenarios base y un robot virtual |
-| Itinerario académico completo | 360 horas; 18 semanas a 20 horas semanales, una vez disponible el laboratorio |
+| Integration platform | ROS 2, compendium adapters, AI services, data services, and an instructor console |
+| Simulator | Godot/OpenXR, fire scenarios based on FDS, physical training instruments, and two haptic levels |
+| Professional program | 240 hours covering private security, prevention, technology, and emergency coordination |
+| Advanced course | 120 additional hours of firefighting training with haptic simulation |
+| Software pilot | 16 weeks, two XR stations, three baseline scenarios, and one virtual robot |
+| Complete academic pathway | 360 hours; 18 weeks at 20 hours per week, once the laboratory is available |
 
-## 2. Punto de partida y alcance de la revisión
+## 2. Starting Point and Review Scope
 
-El [README consultado](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/README.md) enumera herramientas de drones, teleoperación, háptica, aprendizaje y simulación robótica. El árbol revisado contiene ese README y un diagrama de plataforma humanoide, además de su copia de respaldo. El diagrama tiene un único bloque, «Motion Description Language». No se encontró en ese árbol una aplicación integrada, un manifiesto de dependencias, pruebas de integración ni un archivo LICENSE del proyecto.
+The [reviewed README](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/README.md) lists tools for drones, teleoperation, haptics, learning, and robotic simulation. The reviewed repository tree contains that README and a humanoid platform diagram, together with its backup. The diagram has a single block, “Motion Description Language.” No integrated application, dependency manifest, integration tests, or project LICENSE file was found in that tree.
 
-Por ello, el compendio se interpreta como **cartera de tecnologías candidatas**. Las interfaces y servicios de esta propuesta deberán desarrollarse. No se supone compatibilidad directa entre todos los proyectos enumerados. La ausencia de una licencia en el árbol consultado debe resolverse antes de distribuir el nuevo código; cada dependencia conservará su licencia propia.
+The compendium is therefore treated as a **portfolio of candidate technologies**. The interfaces and services in this proposal must be developed. Direct compatibility between all listed projects is not assumed. The absence of a license in the reviewed tree must be addressed before distributing new code; each dependency will retain its own license.
 
-Se verificaron fuentes primarias de las piezas determinantes: XTDrone/XTDrone2, SenseShift, BeaVR, un candidato de Prometheus con fuerza, ROS/Gazebo, MoveIt, Godot, CHAI3D, FDS, el modelo Qwen3 y Moodle. Los nombres sin un repositorio inequívoco en el compendio permanecen identificados como pendientes; no se les asignan capacidades o licencias no verificadas.
+Primary sources were checked for the key components: XTDrone/XTDrone2, SenseShift, BeaVR, a matching candidate for Prometheus force-feedback teleoperation, ROS/Gazebo, MoveIt, Godot, CHAI3D, FDS, the Qwen3 model, and Moodle. Names without an unambiguous repository in the compendium remain marked as pending; unverified capabilities or licenses are not assigned to them.
 
-## 3. Usuarios, competencias y límites operativos
+## 3. Users, Competencies, and Operational Boundaries
 
-| Perfil | Funciones dentro de la plataforma | Alcance formativo |
+| Role | Functions within the platform | Training scope |
 |---|---|---|
-| Especialista de seguridad privada | Prevención, verificación de alertas, comunicaciones, evacuación, control de accesos y entrega de información | Actuación conforme a su designación, entrenamiento y plan del establecimiento |
-| Brigadista designado | Respuesta inicial y tareas autorizadas por la organización | Escenarios y práctica correspondientes a competencias previamente acreditadas |
-| Bombero o instructor de incendios | Validación técnica, conducción de ejercicios y evaluación especializada | Intervención avanzada simulada; práctica real según instalaciones, habilitaciones y procedimientos aplicables |
-| Operador de robots o drones | Reconocimiento y teleoperación supervisada | Simulación inicial; habilitación específica antes de usar equipos reales |
-| Ingeniero de IA/robótica | Integración, calibración, pruebas y trazabilidad | Sin potestad para certificar competencias operativas por motivos técnicos solamente |
+| Private security specialist | Prevention, alert verification, communications, evacuation, access control, and information handover | Actions consistent with assigned duties, training, and the facility plan |
+| Designated fire brigade member | Initial response and tasks authorized by the organization | Scenarios and practical work matching previously established competencies |
+| Firefighter or fire training instructor | Technical validation, exercise supervision, and specialist assessment | Advanced simulated intervention; live practical work subject to applicable facilities, qualifications, and procedures |
+| Robot or drone operator | Reconnaissance and supervised teleoperation | Simulation first; specific qualification before operating real equipment |
+| AI/robotics engineer | Integration, calibration, testing, and traceability | Technical expertise alone does not authorize certification of operational competencies |
 
-El curso avanzado tendrá **dos perfiles de escenario**. En el perfil de seguridad privada se evalúan prevención, aviso, evacuación, decisión de retirada y respuesta inicial autorizada. En el perfil de brigada/bomberos se añaden tareas virtuales de intervención compatibles con la formación previa. Completar el programa de seguridad privada no habilita automáticamente para combate estructural, rescate técnico o uso de equipos respiratorios.
+The advanced course will provide **two scenario profiles**. The private security profile assesses prevention, notification, evacuation, withdrawal decisions, and authorized initial response. The fire brigade/firefighter profile adds virtual intervention tasks consistent with prior training. Completing the private security program does not automatically qualify a participant for structural firefighting, technical rescue, or respiratory protective equipment use.
 
-## 4. Integración del compendio existente
+## 4. Integration of the Existing Software Compendium
 
-Las decisiones de esta matriz son de arquitectura. «Candidato» significa que requiere prueba de integración; «referencia» significa que aporta modelos o métodos sin incorporarse necesariamente al producto.
+The decisions in this matrix are architectural. “Candidate” means integration testing is required; “reference” means the project contributes models or methods without necessarily becoming part of the product.
 
-| Elemento del compendio | Papel propuesto e interfaz | Decisión inicial |
+| Compendium element | Proposed role and interface | Initial decision |
 |---|---|---|
-| XTDrone | Escenarios UAV y referencia de integración PX4/ROS/Gazebo | Conservar ejemplos; evaluar XTDrone2 en un entorno separado |
-| Langostino | Posible plataforma UAV para reconocimiento | Candidato; confirmar repositorio, hardware y licencia |
-| Mission-Directed Swarm | Distribución de misiones de reconocimiento | Investigación posterior al piloto; identidad por confirmar |
-| DroneFleet Optimizer | Vista y asignación de recursos de flota mediante API | Candidato; confirmar API, licencia y funcionamiento local |
-| Altnautica Mission Control | Estación de operación y seguimiento de misiones | Candidato a adaptador de consola; identidad/API por confirmar |
-| SenseShift | Chaleco o guantes para avisos táctiles y eventos de simulación | Integración háptica inicial, condicionada a placa/protocolo verificados |
-| Neural Motion Simulator — MoSim | Avatares, análisis o generación de movimiento | Referencia; confirmar identidad y validez para el movimiento requerido |
-| PyLabRobot | Referencia de abstracción de hardware para banco de pruebas | Fuera del control de extinción; la automatización de laboratorio no demuestra aptitud para bombas contra incendios |
-| Prometheus, teleoperación con fuerza | Referencia de sensado de fuerza y teleoperación bilateral | Banco aislado; revisar límites antes de adaptar al dispositivo físico |
-| BeaVR | Captura de demostraciones y teleoperación mediante poses/acciones | Adaptador experimental; reutilizar backend y datos tras revisión |
-| Virtual Reality Teleoperation of a Humanoid Robot | Interacción humanoide y cinemática | Referencia; falta enlace inequívoco y contrato técnico |
-| VR-Robo | Evaluación de navegación y transferencia entre simulación y realidad | Investigación; separar métricas simuladas de pruebas físicas |
-| Unity VR Robot Realtime Manipulation | Patrones de interfaz y teleoperación | Referencia de migración a Godot; el núcleo propuesto no dependerá de Unity |
-| WFH_locobot | Teleoperación de una base móvil con manipulador | Candidato para robot de inspección virtual; revisar dependencias |
-| Centauro | Modelo de robot de respuesta a desastres | Evaluación posterior de activos y controladores; no asumir hardware disponible |
-| Phantom | Aprendizaje desde demostraciones humanas | Investigación offline con datos autorizados; identidad/licencia por confirmar |
-| AeroFlameGuard | Baseline de detección visual de fuego | Evaluar frente a reflejos, vapor, iluminación y humo; no tratarlo como detector certificado |
-| Contract Net Protocol para UAV | Asignación negociada de tareas | Implementación explícita en simulación; el protocolo no constituye por sí solo un paquete listo |
-| Fast-Planner | Referencia de planificación de trayectorias aéreas | Comparación offline; verificar versión, entorno y adaptación |
-| MoveIt para ROS 2 | Planificación y restricciones de manipuladores | Núcleo de la extensión robótica; configuración específica por robot |
-| Brax | Entrenamiento acelerado de políticas y experimentación | Laboratorio separado de la simulación de incendio y del control háptico |
-| Darwin OP en Gazebo | Modelo educativo de locomoción | Referencia heredada; revisar formatos y soporte antes de migrar |
-| WALK-MAN | Arquitectura de robot para entornos degradados | Referencia MBSE para capacidades y requisitos futuros |
-| Backhoe Arm with Hydraulic Actuation | Modelo de brazo hidráulico | Investigación de dinámica y actuadores; identidad/licencia por confirmar |
+| XTDrone | UAV scenarios and a PX4/ROS/Gazebo integration reference | Retain examples; evaluate XTDrone2 in a separate environment |
+| Langostino | Potential UAV platform for reconnaissance | Candidate; confirm repository, hardware, and license |
+| Mission-Directed Swarm | Assignment of reconnaissance missions | Research after the pilot; identity requires confirmation |
+| DroneFleet Optimizer | Fleet visibility and resource assignment through an API | Candidate; confirm API, license, and local operation |
+| Altnautica Mission Control | Mission operation and tracking station | Candidate console adapter; identity and API require confirmation |
+| SenseShift | Vest or gloves for tactile alerts and simulation events | Initial haptic integration, conditional on verified board and protocol support |
+| Neural Motion Simulator — MoSim | Avatars, motion analysis, or motion generation | Reference; confirm identity and suitability for the required movements |
+| PyLabRobot | Hardware abstraction reference for a test bench | Excluded from suppression control; laboratory automation does not establish suitability for firefighting pumps |
+| Prometheus, force-feedback teleoperation | Reference for force sensing and bilateral teleoperation | Isolated test bench; review limits before adapting physical equipment |
+| BeaVR | Demonstration capture and teleoperation through poses/actions | Experimental adapter; reuse backend and data after review |
+| Virtual Reality Teleoperation of a Humanoid Robot | Humanoid interaction and kinematics | Reference; an unambiguous link and technical contract are missing |
+| VR-Robo | Navigation evaluation and transfer between simulation and reality | Research; keep simulated metrics separate from physical tests |
+| Unity VR Robot Realtime Manipulation | Interface and teleoperation patterns | Reference for migration to Godot; the proposed core will not depend on Unity |
+| WFH_locobot | Teleoperation of a mobile base with a manipulator | Candidate for a virtual inspection robot; review dependencies |
+| Centauro | Disaster-response robot model | Later evaluation of assets and controllers; hardware availability is not assumed |
+| Phantom | Learning from human demonstrations | Offline research using authorized data; identity and license require confirmation |
+| AeroFlameGuard | Baseline for visual fire detection | Evaluate against reflections, steam, lighting, and smoke; do not treat it as a certified detector |
+| Contract Net Protocol for UAVs | Negotiated task assignment | Explicit implementation in simulation; the protocol alone is not a ready-to-use package |
+| Fast-Planner | Aerial trajectory planning reference | Offline comparison; verify version, environment, and adaptation requirements |
+| MoveIt for ROS 2 | Manipulator planning and constraints | Core of the robotic extension; robot-specific configuration is required |
+| Brax | Accelerated policy training and experimentation | Laboratory environment separate from fire simulation and haptic control |
+| Darwin OP in Gazebo | Educational locomotion model | Legacy reference; review formats and support before migration |
+| WALK-MAN | Robot architecture for degraded environments | MBSE reference for future capabilities and requirements |
+| Backhoe Arm with Hydraulic Actuation | Hydraulic arm model | Dynamics and actuator research; identity and license require confirmation |
 
-### Hallazgos que afectan a la integración
+### Findings Affecting Integration
 
-**XTDrone2.** El repositorio original enlaza a XTDrone2 como evolución para ROS 2. Su README declara desarrollo temprano, uso de PX4/ROS 2/Gazebo Ignition y funciones todavía previstas. Es una vía de evaluación, no una dependencia que pueda darse por compatible con el piloto. Para reducir riesgo se propone fijar una pareja documentada, ROS 2 Jazzy y Gazebo Harmonic, y portar o aislar cada adaptador. No se presenta esta pareja como la versión más reciente. [XTDrone](https://github.com/robin-shaun/XTDrone), [XTDrone2](https://github.com/andy-zhuo-02/XTDrone2), [matriz oficial ROS/Gazebo](https://gazebosim.org/docs/harmonic/ros_installation/).
+**XTDrone2.** The original repository links to XTDrone2 as its ROS 2 evolution. Its README states that it is in early development, uses PX4/ROS 2/Gazebo Ignition, and has features still planned. It is an evaluation path, not a dependency that can be assumed compatible with the pilot. To reduce integration risk, this proposal fixes a documented pairing, ROS 2 Jazzy and Gazebo Harmonic, and requires each adapter to be ported or isolated. This pairing is not presented as the latest release. [XTDrone](https://github.com/robin-shaun/XTDrone), [XTDrone2](https://github.com/andy-zhuo-02/XTDrone2), [official ROS/Gazebo compatibility matrix](https://gazebosim.org/docs/harmonic/ros_installation/).
 
-**SenseShift.** Su firmware documenta accesorios DIY y protocolos concretos. OpenXR no convierte automáticamente un chaleco SenseShift en un periférico compatible: se necesita un adaptador probado. Tampoco el soporte de vibración demuestra capacidad para generar la fuerza de reacción de una manguera. [Firmware y hardware documentados](https://github.com/senseshift/senseshift-firmware).
+**SenseShift.** Its firmware documents DIY accessories and specific protocols. OpenXR does not automatically make a SenseShift vest a compatible peripheral: a tested adapter is needed. Vibration support also does not establish the ability to generate hose reaction force. [Documented firmware and hardware](https://github.com/senseshift/senseshift-firmware).
 
-**BeaVR.** Se aprovecharán la captura de demostraciones y su separación de componentes. El README contiene una mención a BSD y una sección MIT; el archivo LICENSE consultado es MIT. Se registrará la licencia del commit elegido y se revisarán por separado app, activos y dependencias. El cliente descrito depende de su entorno XR y no se dará por libre toda la cadena de ejecución. [README](https://github.com/ARCLab-MIT/beavr-bot), [LICENSE](https://github.com/ARCLab-MIT/beavr-bot/blob/main/LICENSE).
+**BeaVR.** Demonstration capture and component separation will be evaluated for reuse. The README mentions BSD in one passage and MIT in its license section; the reviewed LICENSE file is MIT. The license of the selected commit will be recorded, with separate reviews of the app, assets, and dependencies. The documented client relies on its XR environment, so the entire execution chain will not be assumed to be free software. [README](https://github.com/ARCLab-MIT/beavr-bot), [LICENSE](https://github.com/ARCLab-MIT/beavr-bot/blob/main/LICENSE).
 
-**Prometheus.** Se encontró un candidato que coincide con la descripción en [sdk2035/Prometheus-telos](https://github.com/sdk2035/Prometheus-telos). Su README advierte que se desactivaron comprobaciones de límites articulares. Se tratará como material de investigación: hay que revisar y verificar límites antes de conectar hardware. No debe confundirse con Prometheus, el sistema de métricas.
+**Prometheus.** A candidate matching the description was found at [sdk2035/Prometheus-telos](https://github.com/sdk2035/Prometheus-telos). Its README notes that joint-limit checks were disabled. It will be treated as research material: limits must be reviewed and verified before hardware is connected. It should not be confused with Prometheus, the metrics system.
 
-## 5. Arquitectura de referencia
+## 5. Reference Architecture
 
-### 5.1 Capas y responsabilidades
+### 5.1 Layers and Responsibilities
 
-| Capa | Componentes propuestos | Responsabilidad y separación |
+| Layer | Proposed components | Responsibility and separation |
 |---|---|---|
-| Experiencia y aprendizaje | Consola web, Moodle, cliente Godot/OpenXR | Acceso por rol, ejercicios, progreso, reproducción y evaluación del instructor |
-| Aplicación y orquestación | FastAPI, gestor de sesiones, gestor de escenarios, LangGraph | Coordinar flujos, validar solicitudes y conservar el estado de cada ejercicio |
-| IA y conocimiento | Qwen3-8B local, llama.cpp, Qdrant, embeddings multilingües, percepción | Consulta de procedimientos, detección experimental, tutor y borradores con evidencia |
-| Simulación y robótica | FDS/Smokeview, escenarios interactivos, Gazebo, ROS 2, MoveIt | Incendio, escena visual, dinámica robótica y contratos de teleoperación separados |
-| Dispositivos y protección | SenseShift, controlador C++/CHAI3D, instrumentación, parada física | Señales táctiles, fuerza limitada, diagnóstico y transición segura ante fallos |
-| Datos y operación | PostgreSQL, archivos de sesión, rosbag2/MCAP, identidad, auditoría | Versionado, registros, recuperación y sincronización local/central |
+| Experience and learning | Web console, Moodle, Godot/OpenXR client | Role-based access, exercises, progress, replay, and instructor assessment |
+| Application and orchestration | FastAPI, session manager, scenario manager, LangGraph | Coordinate workflows, validate requests, and preserve exercise state |
+| AI and knowledge | Local Qwen3-8B, llama.cpp, Qdrant, multilingual embeddings, perception | Procedure retrieval, experimental detection, tutoring, and evidence-based drafts |
+| Simulation and robotics | FDS/Smokeview, interactive scenarios, Gazebo, ROS 2, MoveIt | Separate fire modeling, visual experience, robot dynamics, and teleoperation contracts |
+| Devices and protection | SenseShift, C++/CHAI3D controller, instrumentation, physical stop | Tactile cues, limited force, diagnostics, and safe transitions after faults |
+| Data and operations | PostgreSQL, session files, rosbag2/MCAP, identity, audit logs | Versioning, records, recovery, and local/central synchronization |
 
-La separación permite cambiar el LLM sin modificar el control háptico y cambiar de robot sin rehacer el curso. Los servicios de identidad, permisos y auditoría son transversales, con despliegues distintos para entrenamiento y experimentación con equipos reales.
+This separation allows the LLM to change without modifying haptic control, and the robot to change without rebuilding the course. Identity, permissions, and audit services span all layers, with distinct deployments for training and experimentation with real equipment.
 
-### 5.2 Flujo de una sesión formativa
+### 5.2 Training Session Workflow
 
-1. El instructor elige competencia, perfil del alumno y escenario aprobado. El gestor crea una sesión con versiones congeladas de escena, rúbrica, modelo y fuentes.
-2. El servidor carga el caso de incendio precalculado y los objetos del recinto. El simulador publica estado y eventos con un reloj de simulación común.
-3. Godot presenta la escena; los instrumentos aportan posición, orientación, activación y fuerza medida. El controlador local genera únicamente señales dentro del perfil físico autorizado.
-4. Un motor de reglas calcula evidencias observables: avisos emitidos, accesos bloqueados, decisiones, uso de instrumentos y coordinación. La IA puede explicar resultados, pero no cambiar retroactivamente la rúbrica.
-5. El instructor reproduce la sesión y confirma o corrige la evaluación. Un adaptador publica resultados en Moodle mediante sus servicios externos y conserva una cola si la red no está disponible.
+1. The instructor selects a competency, learner profile, and approved scenario. The manager creates a session with frozen versions of the scene, rubric, model, and sources.
+2. The server loads the precomputed fire case and facility objects. The simulator publishes state and events using a common simulation clock.
+3. Godot displays the scene; instruments supply position, orientation, activation, and measured force. The local controller generates only signals within the authorized physical profile.
+4. A rule engine derives observable evidence: notifications, blocked access points, decisions, instrument use, and coordination. AI may explain outcomes, but it cannot retroactively change the rubric.
+5. The instructor replays the session and confirms or corrects the assessment. An adapter publishes results to Moodle through its external services and retains a queue when the network is unavailable.
 
-Moodle ofrece una plataforma abierta de aprendizaje y servicios de integración; la conexión concreta al simulador y a su libro de calificaciones será trabajo del proyecto. [Moodle](https://github.com/moodle/moodle), [servicios externos](https://moodledev.io/docs/4.5/apis/subsystems/external).
+Moodle provides an open learning platform and integration services; connecting this simulator and its results to the gradebook remains project development work. [Moodle](https://github.com/moodle/moodle), [external services](https://moodledev.io/docs/4.5/apis/subsystems/external).
 
-### 5.3 Flujo de reconocimiento robótico
+### 5.3 Robotic Reconnaissance Workflow
 
-Sensores y simulación alimentan percepción y estimación del estado. El planificador propone una tarea de inspección; el operador comprueba contexto y la autoriza. Un supervisor determinista valida límites y vigencia del comando antes del controlador del robot. La pérdida de seguimiento, conectividad o condiciones admisibles provoca una respuesta predefinida según el equipo.
+Sensors and simulation feed perception and state estimation. The planner proposes an inspection task; the operator checks the context and authorizes it. A deterministic supervisor validates limits and command freshness before the robot controller receives a command. Loss of tracking, connectivity, or admissible conditions triggers a predefined response appropriate to the equipment.
 
-En el piloto las acciones serán virtuales. La extensión física empezará por inspección teleoperada en un recinto controlado. La descarga de agentes extintores, las misiones autónomas y el trabajo en incendios reales quedan fuera del MVP y necesitan un proyecto de validación propio.
+Pilot actions will be virtual. The physical extension will begin with teleoperated inspection in a controlled facility. Releasing extinguishing agents, autonomous missions, and operation at real fires are outside the MVP and require their own validation project.
 
-### 5.4 Contratos de integración propuestos
+### 5.4 Proposed Integration Contracts
 
-| Contrato | Transporte | Contenido mínimo | Propiedad técnica |
+| Contract | Transport | Minimum content | Technical ownership |
 |---|---|---|---|
-| `Session` y `ScenarioManifest` | REST/JSON | ID, perfil, semilla, versiones, objetivos y referencias | Orquestador; cambios aprobados antes de comenzar |
-| `Observation` | ROS 2/DDS local | Marca temporal, marco espacial, sensor, calidad y validez | Adaptador del sensor o simulador |
-| `HazardHypothesis` | API/eventos | Evidencia, localización, confianza calibrada y fecha de expiración | Servicio de percepción; expresa hipótesis |
-| `ActionProposal` | API/eventos | Objetivo, precondiciones, límites, expiración y aprobación | Orquestador; no es un comando de motor |
-| `ValidatedRobotCommand` | Interfaz ROS 2 del equipo | Secuencia, objetivo permitido y vigencia | Supervisor de control |
-| `HapticCue` | IPC local o protocolo documentado | Tipo, duración y amplitud dentro del perfil autorizado | Adaptador háptico; sin acceso directo del LLM |
-| `TrainingEvent` | HTTPS con cola persistente | Sesión, actor seudónimo, evento, tiempo, rúbrica y evidencia | Registro del ejercicio |
-| `GradeDecision` | Servicios de Moodle | Resultado, evaluador, rúbrica, observaciones y trazabilidad | Instructor identificado |
+| `Session` and `ScenarioManifest` | REST/JSON | ID, profile, seed, versions, objectives, and references | Orchestrator; changes approved before the session starts |
+| `Observation` | Local ROS 2/DDS | Timestamp, coordinate frame, sensor, quality, and validity | Sensor or simulator adapter |
+| `HazardHypothesis` | API/events | Evidence, location, calibrated confidence, and expiry | Perception service; expresses a hypothesis |
+| `ActionProposal` | API/events | Goal, preconditions, limits, expiry, and approval | Orchestrator; not a motor command |
+| `ValidatedRobotCommand` | Equipment ROS 2 interface | Sequence, permitted target, and validity period | Control supervisor |
+| `HapticCue` | Local IPC or documented protocol | Type, duration, and amplitude within the authorized profile | Haptic adapter; no direct LLM access |
+| `TrainingEvent` | HTTPS with persistent queue | Session, pseudonymous actor, event, time, rubric, and evidence | Exercise record |
+| `GradeDecision` | Moodle services | Result, evaluator, rubric, comments, and traceability | Identified instructor |
 
-Estos nombres son contratos por desarrollar. Para reproducción, registrar además `schema_version`, `event_id`, `session_id`, `source`, `sim_time`, tiempo UTC y número de secuencia. Definir unidades SI y transformaciones explícitas entre ejes de XR, ROS y modelos. Los comandos caducados se descartan; los reintentos de resultados utilizan claves de idempotencia. Los clientes XR no obtienen acceso general al dominio de control de robots.
+These names define contracts to be developed. For replay, also record `schema_version`, `event_id`, `session_id`, `source`, `sim_time`, UTC time, and sequence number. Define SI units and explicit transformations between XR, ROS, and model coordinate systems. Expired commands are discarded; result retries use idempotency keys. XR clients do not receive general access to the robot control domain.
 
-Para una integración futura con asistentes externos puede añadirse un servidor MCP con consultas al catálogo, procedimientos e informes. No se expondrán por esa interfaz funciones que envíen órdenes directas a motores o cambien límites de fuerza. MCP es una ampliación posterior, no requisito del MVP.
+A future integration with external assistants may add an MCP server for queries about the catalog, procedures, and reports. This interface will not expose functions that directly command motors or change force limits. MCP is a later extension, not an MVP requirement.
 
-## 6. Servicios de inteligencia artificial
+## 6. Artificial Intelligence Services
 
-### 6.1 Tutor y asistente documental local
+### 6.1 Local Tutor and Document Assistant
 
-Se propone **Qwen3-8B con llama.cpp** como punto de partida medible; la cuantización, contexto y recursos se fijarán tras evaluar español, terminología y concurrencia. Qwen publica esa familia de pesos bajo Apache 2.0 y documenta motores de ejecución locales. Esto no demuestra por sí solo que toda la cadena de entrenamiento y datos sea reproducible. [Fuente del fabricante del modelo](https://qwenlm.github.io/blog/qwen3/).
+**Qwen3-8B with llama.cpp** is proposed as a measurable starting point; quantization, context size, and resources will be fixed after evaluating Spanish, terminology, and concurrency. Qwen releases this model family’s weights under Apache 2.0 and documents local execution frameworks. That alone does not establish reproducibility of the entire training and data pipeline. [Model developer’s publication](https://qwenlm.github.io/blog/qwen3/).
 
-El RAG combinará búsqueda textual y vectorial sobre procedimientos aprobados, manuales autorizados, fichas del escenario y materiales docentes. Cada fragmento conservará documento, versión, vigencia, jurisdicción, permiso de acceso y ubicación de la evidencia. Qdrant almacenará vectores y metadatos; PostgreSQL conservará identidades y relaciones del dominio. [Documentación de Qdrant](https://qdrant.tech/documentation/).
+RAG will combine textual and vector search over approved procedures, authorized manuals, scenario descriptions, and teaching materials. Every retrieved passage will retain its document, version, validity, jurisdiction, access permission, and evidence location. Qdrant will store vectors and metadata; PostgreSQL will preserve identities and domain relationships. [Qdrant documentation](https://qdrant.tech/documentation/).
 
-La respuesta incluirá citas a pasajes recuperados. Si hay fuentes contradictorias, vencidas o insuficientes, el sistema lo indicará y remitirá al instructor. Los documentos recuperados se tratarán como datos, sin permitir que sus instrucciones modifiquen permisos o invoquen herramientas. El flujo con revisión humana se implementará en LangGraph. [Documentación de LangGraph](https://docs.langchain.com/oss/python/langgraph/overview).
+Responses will cite retrieved passages. If sources conflict, are out of date, or provide insufficient evidence, the system will state this and refer the issue to the instructor. Retrieved documents will be treated as data; their instructions cannot modify permissions or invoke tools. The workflow with human review will be implemented in LangGraph. [LangGraph documentation](https://docs.langchain.com/oss/python/langgraph/overview).
 
-### 6.2 Agentes y salidas verificables
+### 6.2 Agents and Verifiable Outputs
 
-| Servicio lógico | Entrada | Salida | Revisión necesaria |
+| Logical service | Input | Output | Required review |
 |---|---|---|---|
-| Tutor RAG | Consulta y competencias del curso | Explicación con fuentes y límites | Instructor en contenidos críticos o conflictivos |
-| Diseñador de escenarios | Objetivo y catálogo aprobado | Borrador de parámetros dentro de rangos permitidos | Validación técnica y docente antes de publicarlo |
-| Analista de percepción | Imágenes, térmica y calidad de sensores | Hipótesis de peligro con evidencia | Operador; no sustituye alarmas reglamentarias |
-| Asistente de recursos | Recursos disponibles y tareas | Propuesta de asignación en simulación | Instructor u operador responsable |
-| Analista de sesión | Eventos y rúbrica congelada | Cronología y borrador de retroalimentación | Instructor decide calificación |
+| RAG tutor | Query and course competencies | Explanation with sources and limitations | Instructor for critical or conflicting content |
+| Scenario designer | Objective and approved catalog | Draft parameters within permitted ranges | Technical and educational validation before publication |
+| Perception analyst | Images, thermal data, and sensor quality | Hazard hypothesis with evidence | Operator; does not replace required alarm systems |
+| Resource assistant | Available resources and tasks | Assignment proposal in simulation | Responsible instructor or operator |
+| Session analyst | Events and frozen rubric | Timeline and draft feedback | Instructor decides the grade |
 
-Son roles de servicio; no necesitan cinco modelos independientes. El MVP utilizará un único servidor de inferencia con colas y permisos diferentes por función.
+These are service roles; they do not require five independent models. The MVP will use one inference server with distinct queues and permissions for each function.
 
-### 6.3 Entrenamiento y evaluación de los modelos
+### 6.3 Model Training and Evaluation
 
-La primera etapa utilizará recuperación documental, reglas y un modelo existente. El ajuste fino solo se justificará por errores medidos que el RAG y los ejemplos no resuelvan. Las demostraciones robóticas se capturarán con consentimiento y metadatos del entorno, separadas de los expedientes laborales.
+The first stage will use document retrieval, rules, and an existing model. Fine-tuning will require measured errors that RAG and examples do not resolve. Robotic demonstrations will be captured with consent and environment metadata, separately from employment records.
 
-El vídeo se procesará en un servicio de visión independiente del LLM textual. Para percepción, separar entrenamiento y validación por edificio, fecha y cámara; no repartir fotogramas contiguos entre ambos conjuntos. Incluir situaciones negativas: vapor, reflejos, soldadura simulada, iluminación variable y oclusiones. Medir sensibilidad, precisión, falsas alarmas por hora y tiempo de detección por escenario; no publicar un único porcentaje de exactitud como garantía de seguridad.
+Video will be processed by a vision service independent of the text LLM. For perception, separate training and validation by building, date, and camera; do not split adjacent frames between the two sets. Include negative cases: steam, reflections, simulated welding, variable lighting, and occlusion. Measure sensitivity, precision, false alarms per hour, and detection time by scenario; do not present a single accuracy percentage as a safety guarantee.
 
-Para el tutor, preparar al menos 100 preguntas revisadas por especialistas, con casos fuera de alcance y fuentes contradictorias. Medir corrección, respaldo documental y abstención adecuada. Para políticas robóticas, empezar en simulación y evaluar cambios de sensores y dinámica; una puntuación simulada no acredita desempeño en un incendio.
+For the tutor, prepare at least 100 specialist-reviewed questions, including out-of-scope cases and conflicting sources. Measure correctness, documentary support, and appropriate abstention. For robotic policies, begin in simulation and evaluate sensor and dynamics changes; a simulated score does not establish performance at a fire.
 
-## 7. Simulador virtual háptico de lucha contra incendios
+## 7. Virtual Haptic Firefighting Simulator
 
-### 7.1 Arquitectura del gemelo digital
+### 7.1 Digital Twin Architecture
 
-**Modelo físico del incendio.** FDS calcula transporte de calor y humo; Smokeview permite inspeccionar sus resultados. Se generará un catálogo de casos offline con geometría, materiales, condiciones y limitaciones documentadas. El producto no presupone que un cálculo CFD completo pueda ejecutarse a la frecuencia del visor. [NIST FDS/Smokeview](https://www.nist.gov/services-resources/software/fds-and-smokeview).
+**Physical fire model.** FDS computes heat and smoke transport; Smokeview supports inspection of its results. An offline case catalog will document geometry, materials, conditions, and limitations. The product does not assume that a complete CFD calculation can run at headset refresh rate. [NIST FDS/Smokeview](https://www.nist.gov/services-resources/software/fds-and-smokeview).
 
-**Experiencia interactiva.** Godot/OpenXR representa visibilidad, objetos, ocupantes, herramientas y comunicaciones. El estado interactivo selecciona ramas precalculadas o un modelo reducido dentro de un dominio validado. Si el alumno sale de ese dominio, el sistema informa al instructor y detiene o cambia de forma explícita el ejercicio. Godot dispone de entradas, poses y salidas hápticas a través de acciones XR; se requiere desarrollar la lógica propia del curso. [Acciones XR de Godot](https://docs.godotengine.org/en/stable/tutorials/xr/xr_action_map.html).
+**Interactive experience.** Godot/OpenXR represents visibility, objects, occupants, tools, and communications. Interactive state selects precomputed branches or a reduced-order model within a validated domain. If a learner moves outside that domain, the system notifies the instructor and explicitly pauses or changes the exercise. Godot provides inputs, poses, and haptic outputs through XR actions; course-specific logic must be developed. [Godot XR actions](https://docs.godotengine.org/en/stable/tutorials/xr/xr_action_map.html).
 
-**Dinámica robótica.** Gazebo será responsable de colisiones y movimiento del robot; MoveIt de planificación del manipulador. Godot reflejará esos estados sin simular un segundo robot físico independiente. Un único gestor de escenario coordinará incendio, ocupantes y eventos. La evacuación usará un módulo propio validado: NIST informa que FDS+Evac dejó de tener soporte y no se adopta como dependencia nueva. [FDS-SMV](https://pages.nist.gov/fds-smv/), [MoveIt 2](https://moveit.picknik.ai/main/index.html).
+**Robot dynamics.** Gazebo will own robot collisions and motion; MoveIt will handle manipulator planning. Godot will mirror these states without running an independent second physical robot simulation. A single scenario manager will coordinate fire, occupants, and events. Evacuation will use a separately validated project module: NIST reports that support for FDS+Evac has ended, so it is not adopted as a new dependency. [FDS-SMV](https://pages.nist.gov/fds-smv/), [MoveIt 2](https://moveit.picknik.ai/main/index.html).
 
-No se utilizará un efecto visual de partículas como evidencia de exactitud física. En los escenarios de descarga se documentará la aproximación de interacción del agente y el fuego, sus datos de referencia y los límites de extrapolación.
+A visual particle effect will not be used as evidence of physical accuracy. Discharge scenarios will document the approximation of extinguishing-agent/fire interaction, reference data, and extrapolation limits.
 
-### 7.2 Dos niveles de háptica
+### 7.2 Two Haptic Levels
 
-| Nivel | Componentes | Qué permite entrenar | Límites de representación |
+| Level | Components | Training capabilities | Representation limits |
 |---|---|---|---|
-| H1 — Háptica táctil | Mandos XR, accesorios SenseShift, instrumento inerte con sensores | Activación, contacto, orientación, avisos y secuencias de manejo | Vibración y señales táctiles; no reproduce el empuje real de una manguera |
-| H2 — Fuerza instrumentada | Mando/boquilla inerte, sensores de fuerza/posición, mecanismo limitado y controlador dedicado | Resistencia graduada y coordinación bajo un perfil mecánico validado | No reproduce automáticamente peso, caudal, calor o dinámica de un equipo real |
+| H1 — Tactile haptics | XR controllers, SenseShift accessories, inert training instrument with sensors | Activation, contact, orientation, alerts, and handling sequences | Vibration and tactile cues; does not reproduce actual hose reaction force |
+| H2 — Instrumented force feedback | Inert handle/nozzle, force and position sensors, limited mechanism, dedicated controller | Graduated resistance and coordination under a validated mechanical profile | Does not automatically reproduce the weight, flow, heat, or dynamics of real equipment |
 
-H1 será la primera versión. H2 se incorporará después de validar el banco con personal competente en háptica y seguridad mecánica. CHAI3D aporta algoritmos y abstracciones de interacción por fuerza; no convierte por sí mismo un mecanismo en un equipo seguro. Sus parámetros deben respetar las características del dispositivo. [Documentación de renderizado háptico](https://www.chai3d.org/download/doc/html/chapter17-haptics.html).
+H1 will be the first version. H2 will be introduced after the bench is validated by personnel competent in haptics and mechanical safety. CHAI3D supplies algorithms and abstractions for force interaction; it does not by itself make a mechanism safe. Its parameters must respect the device’s characteristics. [Haptic rendering documentation](https://www.chai3d.org/download/doc/html/chapter17-haptics.html).
 
-### 7.3 Estación física y protección
+### 7.3 Physical Station and Protection
 
-La estación tendrá visor con seguimiento, instrumentos inertes, sensores de activación/orientación, zona despejada, observación del instructor y parada accesible. Los dispositivos de fuerza incorporarán un circuito independiente de inhibición, watchdog, límites de recorrido y un mecanismo de liberación diseñado para el equipo. La respuesta segura se definirá por análisis mecánico: retirar energía no debe producir una caída o liberación peligrosa.
+The station will include a tracked headset, inert training instruments, activation/orientation sensors, a clear exercise area, instructor observation, and an accessible stop. Force devices will incorporate an independent inhibit circuit, watchdog, travel limits, and an equipment-specific release mechanism. Mechanical analysis will define the safe response: removing power must not cause a hazardous fall or release.
 
-Los perfiles de fuerza y variación de fuerza se calibrarán con instrumentación. Sus valores no se deducirán de una respuesta del LLM. Se ensayarán pérdida de seguimiento, retraso, lectura inválida, bloqueo del proceso y reconexión. El sistema no rearmará actuadores automáticamente después de una parada.
+Force and force-rate profiles will be calibrated with instrumentation. Their values will not be derived from an LLM response. Tests will cover tracking loss, delay, invalid readings, process lockup, and reconnection. The system will not automatically rearm actuators after a stop.
 
-El calor se representará mediante señales visuales, audio o vibración diferenciada. El diseño base no incorpora quemadores, humo real ni generación de dolor. Para fatiga y mareo, se proponen bloques inmersivos de 10–15 minutos, pausas y alternativas de pantalla/observación. La duración se ajustará al usuario y al criterio del instructor; no se presentará como límite clínico universal.
+Heat will be represented through visual cues, audio, or distinct vibration patterns. The baseline design excludes burners, real smoke, and pain generation. For fatigue and motion sickness, 10–15-minute immersive blocks, breaks, and screen-based or observation alternatives are proposed. Duration will be adjusted to the participant and instructor judgment; it is not presented as a universal clinical limit.
 
-### 7.4 Ritmos de ejecución y objetivos iniciales
+### 7.4 Execution Rates and Initial Targets
 
-| Subsistema | Objetivo de diseño | Validación |
+| Subsystem | Design target | Validation |
 |---|---|---|
-| Render XR | 90 Hz cuando lo admita el visor; presupuesto de cuadro de aproximadamente 11,1 ms | Medir estabilidad de cuadros y latencia en escena representativa |
-| Interacción de escena | Paso fijo, inicialmente 60 Hz | Reproducción consistente de eventos y reglas |
-| Control local de fuerza | Objetivo inicial de 1 kHz, sujeto al dispositivo | Medir jitter, estabilidad y fallos de plazo con ingeniero responsable |
-| Avisos táctiles H1 | Frecuencia y latencia propias del protocolo probado | Medición extremo a extremo; no confundir con el lazo de fuerza |
-| Tutor IA | Respuesta útil p95 en 5 s como objetivo inicial de consulta | Banco de preguntas y concurrencia documentada |
-| Cálculo FDS | Ejecución offline; tiempo dependiente del caso y malla | Convergencia y contraste con casos de referencia |
+| XR rendering | 90 Hz where supported by the headset; approximately 11.1 ms frame budget | Measure frame stability and latency in a representative scene |
+| Scene interaction | Fixed timestep, initially 60 Hz | Consistent replay of events and rules |
+| Local force control | Initial 1 kHz target, subject to the device | Measure jitter, stability, and missed deadlines with the responsible engineer |
+| H1 tactile cues | Frequency and latency specific to the tested protocol | End-to-end measurement; distinguish it from the force-control loop |
+| AI tutor | Useful response within 5 seconds at p95 as an initial query target | Documented question set and concurrency |
+| FDS calculation | Offline execution; duration depends on case and mesh | Convergence and comparison with reference cases |
 
-Son presupuestos para dimensionar y probar, no mediciones actuales. Las órdenes de fuerza no pasarán por nube, Moodle, mensajería de negocio ni inferencia del LLM. La telemetría podrá copiarse de forma asíncrona para evaluación.
+These are budgets for sizing and testing, not current measurements. Force commands will not pass through cloud services, Moodle, business messaging, or LLM inference. Telemetry may be copied asynchronously for assessment.
 
-### 7.5 Catálogo de escenarios
+### 7.5 Scenario Catalog
 
-| ID | Situación simulada | Competencia principal | Evidencia observada |
+| ID | Simulated situation | Main competency | Observed evidence |
 |---|---|---|---|
-| S01 | Oficina con indicio de incendio y salida disponible | Verificar, avisar y decidir entre respuesta inicial autorizada y evacuación | Secuencia, comunicación y conservación de una salida segura |
-| S02 | Almacén con humo y ruta habitual bloqueada | Coordinar evacuación y contabilizar personas | Ruta elegida, apoyo a ocupantes y entrega de información |
-| S03 | Sala eléctrica o UPS con riesgo incierto | Reconocer límites y solicitar apoyo competente | Decisión de no improvisar una intervención y delimitación del área |
-| S04 | Cocina comercial | Identificar el contexto y el procedimiento aprobado | Selección de protocolo, aviso y escalamiento |
-| S05 | Aparcamiento con vehículo eléctrico afectado | Reconocer un escenario especializado y proteger a terceros | Evacuación, información y coordinación con bomberos |
-| S06 | Instalación industrial próxima a vegetación | Coordinar observación y recursos | Mapa de incidentes, comunicaciones y vigilancia de cambios |
-| S07 | Inspección con robot en visibilidad degradada | Teleoperar dentro de límites y recuperar control | Trayectoria, pérdida de enlace, parada y reporte |
-| S08 | Ejercicio combinado con alarma, evacuación y datos contradictorios | Liderazgo y transferencia de mando | Resolución de discrepancias, trazabilidad y revisión posterior |
+| S01 | Office with a possible fire and an available exit | Verify, notify, and choose between authorized initial response and evacuation | Sequence, communication, and preservation of a safe exit |
+| S02 | Warehouse with smoke and a blocked usual route | Coordinate evacuation and account for people | Route selection, occupant assistance, and information handover |
+| S03 | Electrical or UPS room with uncertain hazards | Recognize limits and request competent assistance | Decision against improvised intervention and control of the affected area |
+| S04 | Commercial kitchen | Identify the context and approved procedure | Procedure selection, notification, and escalation |
+| S05 | Parking area with an affected electric vehicle | Recognize a specialist incident and protect others | Evacuation, information, and coordination with firefighters |
+| S06 | Industrial facility near vegetation | Coordinate observation and resources | Incident map, communications, and monitoring of changes |
+| S07 | Robot inspection in degraded visibility | Teleoperate within limits and regain control | Trajectory, link loss, stopping, and reporting |
+| S08 | Combined exercise with an alarm, evacuation, and conflicting data | Leadership and transfer of command | Resolution of discrepancies, traceability, and after-action review |
 
-S01–S03 forman el MVP. S04–S08 son ampliaciones. Todos los casos se adaptarán al perfil del alumno y al plan del establecimiento. Las escenas avanzadas de humo y ambientes peligrosos son virtuales; su uso docente no equivale a una autorización para entrar en esos ambientes.
+S01–S03 form the MVP. S04–S08 are extensions. Every case will be adapted to the learner’s profile and the facility plan. Advanced scenes involving smoke and hazardous environments are virtual; their educational use does not authorize entry into those environments.
 
-## 8. Curso avanzado: intervención simulada y coordinación contra incendios — 120 horas
+## 8. Advanced Course: Simulated Firefighting Response and Coordination — 120 Hours
 
-### 8.1 Admisión, objetivos y modalidad
+### 8.1 Admission, Objectives, and Delivery
 
-Dirigido a especialistas de seguridad, brigadistas y profesionales de emergencias con formación básica demostrable. Antes de matricular, se revisan sus funciones, experiencia y requisitos para las prácticas previstas. El instructor asigna perfil de seguridad privada o perfil de brigada/bomberos.
+Designed for security specialists, fire brigade members, and emergency professionals with demonstrable foundational training. Before enrollment, their responsibilities, experience, and prerequisites for the planned practical work are reviewed. The instructor assigns either the private security profile or the fire brigade/firefighter profile.
 
-Al finalizar, el participante deberá interpretar un escenario, reconocer cuándo no intervenir, ejecutar en simulación las tareas de su perfil, comunicarse con el mando, utilizar instrumentos hápticos y producir un informe con evidencias. La formación combina teoría, laboratorio XR y práctica presencial supervisada.
+By the end of the course, participants should be able to interpret a scenario, recognize when not to intervene, perform their profile’s tasks in simulation, communicate with incident command, use haptic instruments, and produce an evidence-based report. Delivery combines theory, an XR laboratory, and supervised in-person practice.
 
-**Duración:** seis semanas a 20 horas. T = teoría/casos; XR = laboratorio, briefing, turnos inmersivos, observación y debriefing; P = práctica presencial fuera del visor. Las 70 horas de laboratorio XR no son 70 horas de exposición continua al visor.
+**Duration:** six weeks at 20 hours per week. T = theory/case studies; XR = laboratory work, briefing, immersive turns, observation, and debriefing; P = in-person practice outside the headset. The 70 XR laboratory hours do not mean 70 hours of continuous headset exposure.
 
-### 8.2 Malla del curso avanzado
+### 8.2 Advanced Course Curriculum
 
-| Módulo | Contenidos y resultado observable | T | XR | P | Total |
+| Module | Content and observable outcome | T | XR | P | Total |
 |---|---|---:|---:|---:|---:|
-| A1. Riesgo y límites de actuación | Principios del incendio, rol asignado y criterios de retirada; justificar una decisión | 4 | 4 | 0 | 8 |
-| A2. Lectura del escenario | Humo, visibilidad, información térmica y señales inciertas; distinguir dato de inferencia | 4 | 8 | 0 | 12 |
-| A3. Instrumentos y háptica | Inspección del equipo de entrenamiento, extintor/boquilla inertes y coordinación; completar tareas del perfil | 2 | 12 | 6 | 20 |
-| A4. Evacuación y mando | Comunicaciones, recuento, accesibilidad y coordinación; transferir información sin omisiones | 4 | 8 | 4 | 16 |
-| A5. Escenarios complejos | Industria, electricidad, cocina y baterías; reconocer límites y escalar a especialistas | 4 | 12 | 0 | 16 |
-| A6. Robótica de apoyo | Inspección virtual, teleoperación, percepción y pérdida de enlace; mantener control autorizado | 2 | 10 | 4 | 16 |
-| A7. Transferencia y equipo | Ejercicios coordinados y estaciones con material inerte; demostrar habilidades fuera del visor | 2 | 8 | 10 | 20 |
-| A8. Evaluación integrada | Escenario desconocido, reporte, defensa de decisiones y plan de mejora | 2 | 8 | 2 | 12 |
+| A1. Risk and operational boundaries | Fire principles, assigned role, and withdrawal criteria; justify a decision | 4 | 4 | 0 | 8 |
+| A2. Reading the scenario | Smoke, visibility, thermal information, and uncertain signals; distinguish data from inference | 4 | 8 | 0 | 12 |
+| A3. Instruments and haptics | Training-equipment inspection, inert extinguisher/nozzle, and coordination; complete profile-specific tasks | 2 | 12 | 6 | 20 |
+| A4. Evacuation and incident command | Communications, accountability, accessibility, and coordination; hand over information without omissions | 4 | 8 | 4 | 16 |
+| A5. Complex scenarios | Industry, electricity, kitchens, and batteries; recognize limits and escalate to specialists | 4 | 12 | 0 | 16 |
+| A6. Robotic support | Virtual inspection, teleoperation, perception, and link loss; maintain authorized control | 2 | 10 | 4 | 16 |
+| A7. Skill transfer and teamwork | Coordinated exercises and stations with inert training equipment; demonstrate skills outside the headset | 2 | 8 | 10 | 20 |
+| A8. Integrated assessment | Unfamiliar scenario, report, justification of decisions, and improvement plan | 2 | 8 | 2 | 12 |
 | **Total** | | **24** | **70** | **26** | **120** |
 
-Las prácticas P utilizan equipos de entrenamiento, ejercicios de comunicación, recorridos de evacuación y estaciones supervisadas. El fuego real no se incluye en estas 120 horas: si una entidad formadora lo incorpora, deberá rediseñar y validar esa práctica específica, sus requisitos y su carga horaria.
+P sessions use training equipment, communication exercises, evacuation routes, and supervised stations. Live fire is not included in these 120 hours: a training provider adding it must redesign and validate that specific practical component, its prerequisites, and its allocated hours.
 
-### 8.3 Evaluación del curso avanzado
+### 8.3 Advanced Course Assessment
 
-| Dimensión | Peso | Evidencia |
+| Dimension | Weight | Evidence |
 |---|---:|---|
-| Interpretación del riesgo y decisión | 30 % | Justificación, contexto, información ausente y elección de actuar/retirarse |
-| Manejo de instrumentos según perfil | 25 % | Activación, orientación, coordinación y cuidado del equipo |
-| Comunicación y trabajo en equipo | 20 % | Mensajes, confirmaciones, recuento y transferencia al mando |
-| Cumplimiento de límites de seguridad | 15 % | Respeto a zonas, parada, funciones y criterios de abandono |
-| Informe y debriefing | 10 % | Cronología, fuentes, errores identificados y acciones de mejora |
+| Risk interpretation and decision-making | 30% | Justification, context, missing information, and the decision to act or withdraw |
+| Profile-specific instrument handling | 25% | Activation, orientation, coordination, and equipment care |
+| Communication and teamwork | 20% | Messages, confirmations, accountability, and handover to incident command |
+| Compliance with safety boundaries | 15% | Respect for zones, stops, responsibilities, and withdrawal criteria |
+| Report and debriefing | 10% | Timeline, sources, identified errors, and improvement actions |
 
-**Aprobación propuesta:** mínimo 85/100 y cumplimiento de todos los criterios críticos. Una infracción crítica no se compensa con velocidad o buen promedio. Ejemplos: ignorar una parada, ejecutar una tarea fuera del perfil o continuar una intervención simulada cuando el guion exige retirada.
+**Proposed passing criteria:** at least 85/100 and compliance with every critical criterion. A critical violation cannot be offset by speed or a strong average score. Examples include ignoring a stop, performing a task outside the assigned profile, or continuing a simulated intervention when the scenario requires withdrawal.
 
-La evaluación contiene estación práctica, escenario individual, ejercicio de equipo e informe. El instructor valida los resultados y ofrece recuperación específica. Se proponen comprobaciones de retención a 30 y 90 días para evaluar transferencia del aprendizaje; son decisiones académicas, no periodicidades normativas.
+Assessment includes a practical station, an individual scenario, a team exercise, and a report. The instructor validates results and provides targeted remediation. Retention checks at 30 and 90 days are proposed to evaluate learning transfer; these are academic design decisions, not statutory intervals.
 
-## 9. Plan de estudios: especialista profesional en seguridad privada — 240 horas
+## 9. Curriculum: Professional Private Security Specialist — 240 Hours
 
-### 9.1 Perfil de egreso
+### 9.1 Graduate Profile
 
-Profesional capaz de analizar riesgos del servicio, prevenir incidentes, gestionar accesos, utilizar sistemas de vigilancia respetando derechos, documentar eventos y coordinar emergencias. Podrá interpretar el alcance y las limitaciones de herramientas de IA y apoyar operaciones de inspección con robots o drones dentro de sus funciones.
+A professional able to analyze service-related risks, prevent incidents, manage access, use surveillance systems while respecting rights, document events, and coordinate emergencies. Graduates should understand the scope and limitations of AI tools and support robot or drone inspection activities within their responsibilities.
 
-El plan está orientado a seguridad corporativa, instalaciones logísticas, comercio, hotelería e industria. Es una propuesta de especialización; no sustituye la formación básica, autorizaciones o acreditaciones exigibles en cada jurisdicción.
+The program targets corporate security, logistics facilities, retail, hospitality, and industry. It is a specialization proposal; it does not replace foundational training, authorizations, or credentials required in each jurisdiction.
 
-**Duración:** doce semanas a 20 horas. T = teoría; L = laboratorio/casos/simulación, con o sin XR; P = práctica presencial supervisada.
+**Duration:** twelve weeks at 20 hours per week. T = theory; L = laboratory work/case studies/simulation, with or without XR; P = supervised in-person practice.
 
-### 9.2 Malla curricular
+### 9.2 Professional Curriculum
 
-| Módulo | Competencias y evidencia de aprendizaje | T | L | P | Total |
+| Module | Competencies and learning evidence | T | L | P | Total |
 |---|---|---:|---:|---:|---:|
-| P1. Ética, derechos y marco aplicable | Funciones, límites, trato digno y privacidad; resolver casos de actuación profesional | 12 | 4 | 0 | 16 |
-| P2. Análisis de riesgos | Activos, amenazas, vulnerabilidades y medidas; elaborar una matriz del establecimiento | 10 | 10 | 4 | 24 |
-| P3. Protección física y accesos | Visitantes, contratistas, rondas y prevención de pérdidas; diseñar un procedimiento de acceso | 8 | 8 | 8 | 24 |
-| P4. Comunicación y desescalada | Escucha, conflictos, atención inclusiva y coordinación; resolver un incidente simulado | 6 | 8 | 6 | 20 |
-| P5. CCTV, alarmas e IA | Monitoreo, falsas alarmas, límites de analítica y protección de datos; revisar una alerta con evidencia | 8 | 12 | 4 | 24 |
-| P6. Ciberseguridad aplicada al servicio | Identidades, credenciales, phishing y reporte de fallos; ejecutar un ejercicio defensivo | 8 | 10 | 2 | 20 |
-| P7. Prevención y respuesta inicial al incendio | Inspecciones, avisos, equipos y criterios de actuación; demostrar el procedimiento autorizado | 8 | 10 | 6 | 24 |
-| P8. Evacuación y coordinación de emergencias | Plan del recinto, roles, recuento y mando; conducir un ejercicio de evacuación | 6 | 8 | 6 | 20 |
-| P9. Primeros auxilios y apoyo inicial | Reconocimiento de emergencias y ayuda dentro de la formación; evaluación práctica por instructor competente | 4 | 0 | 12 | 16 |
-| P10. Drones y robots de inspección | Uso responsable, observación y límites operativos; misión virtual y reporte | 4 | 10 | 2 | 16 |
-| P11. Informes y preservación de evidencia | Cronologías, registro, conservación y escalamiento; producir un parte verificable | 6 | 8 | 2 | 16 |
-| P12. Proyecto integrador | Plan de seguridad y ejercicio combinado; defender decisiones ante un panel | 0 | 10 | 10 | 20 |
+| P1. Ethics, rights, and the applicable framework | Duties, boundaries, dignified treatment, and privacy; resolve professional conduct cases | 12 | 4 | 0 | 16 |
+| P2. Risk analysis | Assets, threats, vulnerabilities, and controls; produce a facility risk matrix | 10 | 10 | 4 | 24 |
+| P3. Physical protection and access control | Visitors, contractors, patrols, and loss prevention; design an access procedure | 8 | 8 | 8 | 24 |
+| P4. Communication and de-escalation | Listening, conflict, inclusive assistance, and coordination; resolve a simulated incident | 6 | 8 | 6 | 20 |
+| P5. CCTV, alarms, and AI | Monitoring, false alarms, analytics limitations, and data protection; review an alert against evidence | 8 | 12 | 4 | 24 |
+| P6. Cybersecurity for security operations | Identities, credentials, phishing, and fault reporting; complete a defensive exercise | 8 | 10 | 2 | 20 |
+| P7. Fire prevention and initial response | Inspections, notifications, equipment, and response criteria; demonstrate the authorized procedure | 8 | 10 | 6 | 24 |
+| P8. Evacuation and emergency coordination | Facility plan, roles, accountability, and incident command; conduct an evacuation exercise | 6 | 8 | 6 | 20 |
+| P9. First aid and initial assistance | Emergency recognition and assistance within training scope; practical assessment by a competent instructor | 4 | 0 | 12 | 16 |
+| P10. Inspection drones and robots | Responsible use, observation, and operational boundaries; virtual mission and report | 4 | 10 | 2 | 16 |
+| P11. Reports and evidence preservation | Timelines, recording, preservation, and escalation; produce a verifiable incident report | 6 | 8 | 2 | 16 |
+| P12. Capstone project | Security plan and combined exercise; defend decisions before an assessment panel | 0 | 10 | 10 | 20 |
 | **Total** | | **80** | **98** | **62** | **240** |
 
-El módulo P9 describe un área de formación y requiere un programa práctico impartido por personal competente; este documento no contiene instrucciones clínicas. La vigilancia con IA se centrará en eventos y revisión humana: no se incorporarán puntuaciones opacas de personas ni inferencias de atributos sensibles como competencia curricular.
+P9 describes a training area and requires a practical program taught by competent personnel; this document does not contain clinical instructions. AI-assisted surveillance will focus on events and human review: opaque scoring of individuals and inference of sensitive attributes will not be included as curricular competencies.
 
-### 9.3 Secuencia y evaluación
+### 9.3 Sequence and Assessment
 
-Las semanas 1–4 cubren fundamentos, riesgo, accesos y comunicación; las semanas 5–8, tecnología, prevención y respuesta; las semanas 9–12, práctica integrada, documentación y proyecto. La distribución concreta de módulos se ajustará a disponibilidad de instructores, manteniendo sus horas y prerrequisitos.
+Weeks 1–4 cover foundations, risk, access control, and communication; weeks 5–8 cover technology, prevention, and response; weeks 9–12 cover integrated practice, documentation, and the capstone. Detailed scheduling will reflect instructor availability while preserving each module’s hours and prerequisites.
 
-P1 y P2 preceden a P3/P5; P7 precede a las prácticas de emergencia de P8; P5/P6 preceden a P10; todos alimentan P12. Los contenidos de P7/P8 introducen competencias que el curso avanzado retoma con escenarios de mayor complejidad, por lo que sus horas no se convalidan automáticamente.
+P1 and P2 precede P3/P5; P7 precedes the emergency exercises in P8; P5/P6 precede P10; all modules feed into P12. P7/P8 introduce competencies revisited through more complex scenarios in the advanced course, so their hours are not automatically credited toward that course.
 
-**Evaluación propuesta:** conocimientos y casos 25 %, estaciones prácticas 35 %, simulaciones de equipo 20 % y proyecto final 20 %. Se exige mínimo 80/100, evidencia de todas las prácticas esenciales y cumplimiento de todos los criterios críticos. La IA aporta retroalimentación; un evaluador humano firma el resultado.
+**Proposed assessment:** knowledge and case studies 25%, practical stations 35%, team simulations 20%, and capstone project 20%. Passing requires at least 80/100, evidence of all essential practical activities, and compliance with every critical criterion. AI provides feedback; a human evaluator signs the result.
 
-El portafolio del egresado contendrá matriz de riesgos, procedimiento de acceso, revisión de alertas, plan de coordinación de emergencia, informe de incidente y evidencia del ejercicio final. Estos documentos serán seudonimizados cuando se usen para docencia.
+The graduate portfolio will contain a risk matrix, access procedure, alert review, emergency coordination plan, incident report, and evidence from the final exercise. These documents will be pseudonymized when used for teaching.
 
-### 9.4 Encaje institucional y adaptación a Perú
+### 9.4 Institutional Alignment and Adaptation to Peru
 
-Como posible aplicación en Perú, la entidad interesada deberá contrastar el programa con la regulación vigente de SUCAMEC y las atribuciones del centro de formación o departamento de capacitación elegido. La entidad mantiene un [directorio oficial de CEFOESP y departamentos autorizados](https://www.gob.pe/institucion/sucamec/informes-publicaciones/4764413-departamentos-de-capacitacion-o-centros-de-formacion-y-especializacion-en-seguridad-privada-cefoesp-autorizados-por-sucamec). El acceso íntegro a esa página no estuvo disponible durante la revisión; se identificó su ficha oficial, sin validar aquí un centro específico.
+For a potential application in Peru, the interested organization must compare the program with current SUCAMEC regulations and the authorized scope of the selected training center or training department. SUCAMEC maintains an [official directory of authorized CEFOESP training centers and training departments](https://www.gob.pe/institucion/sucamec/informes-publicaciones/4764413-departamentos-de-capacitacion-o-centros-de-formacion-y-especializacion-en-seguridad-privada-cefoesp-autorizados-por-sucamec). Full access to that page was unavailable during the original review; its official listing was identified, but no specific center was validated here.
 
-**Las cargas de 240 y 120 horas son propuestas propias.** No se presentan como horas obligatorias de SUCAMEC ni como cursos autorizados, y no se confirmó una equivalencia regulatoria. Antes de comercializarlos, la entidad formadora debe mapear contenidos, modalidad, prácticas e instructores con los requisitos que le correspondan.
+**The 240-hour and 120-hour allocations are original proposals.** They are not presented as SUCAMEC-mandated hours or authorized courses, and no regulatory equivalence was confirmed. Before offering them commercially, the training provider must map content, delivery mode, practical work, and instructors to the requirements that apply to it.
 
-Para mando de incidentes se puede usar como referencia conceptual el curso [FEMA IS-100.C](https://training.fema.gov/programs/independent-study/courseoverview.aspx?code=IS-100.c&lang=en). Citarlo no convierte el programa en un curso FEMA ni garantiza un certificado de esa institución. La formación de incendios adoptará los procedimientos y normas aplicables al establecimiento y las competencias del organismo de respuesta participante.
+The [FEMA IS-100.C course](https://training.fema.gov/programs/independent-study/courseoverview.aspx?code=IS-100.c&lang=en) may serve as a conceptual reference for incident command. Citing it does not make this program a FEMA course or guarantee a FEMA certificate. Fire training will adopt procedures and standards applicable to the facility and the competencies of the participating emergency-response organization.
 
-## 10. Datos, despliegue y continuidad
+## 10. Data, Deployment, and Continuity
 
-### 10.1 Despliegue inicial
+### 10.1 Initial Deployment
 
-| Nodo | Servicios | Hipótesis inicial de dimensionamiento |
+| Node | Services | Initial sizing assumption |
 |---|---|---|
-| Estación XR, dos unidades | Godot, seguimiento y adaptador de instrumentos | PC con 32 GB de RAM y GPU dedicada; capacidad final según visor y escena medidos |
-| Controlador háptico | Proceso local C++ y electrónica del mecanismo | Recursos reservados; inhibición física independiente; sin dependencia de internet |
-| Servidor local de aula | API, PostgreSQL, Qdrant, Moodle e inferencia | Punto de ensayo: 64 GB de RAM; GPU independiente si se requiere concurrencia de IA |
-| Nodo de cálculo de escenarios | FDS y preparación de casos | CPU/RAM según malla; trabajos offline, sin competir con la sesión XR |
-| Servidor central opcional | Copias, catálogo y administración de sedes | Sincronización posterior; no forma parte del control háptico |
+| XR station, two units | Godot, tracking, and instrument adapter | PC with 32 GB RAM and a dedicated GPU; final capacity based on measured headset and scene requirements |
+| Haptic controller | Local C++ process and mechanism electronics | Reserved resources; independent physical inhibit; no internet dependency |
+| Local classroom server | API, PostgreSQL, Qdrant, Moodle, and inference | Test starting point: 64 GB RAM; separate GPU if AI concurrency requires it |
+| Scenario computation node | FDS and case preparation | CPU/RAM according to mesh; offline jobs without competing with the XR session |
+| Optional central server | Backups, catalog, and site administration | Later synchronization; not part of haptic control |
 
-Son hipótesis de prueba, no una lista de compra. No se infiere que una cantidad de memoria asegure una frecuencia de visor determinada. Una sede pequeña puede compartir servicios si las mediciones demuestran aislamiento suficiente.
+These are test assumptions, not a purchasing list. A memory capacity alone is not assumed to guarantee a particular headset frame rate. A small site may share services if measurements establish sufficient isolation.
 
-El MVP empleará contenedores para servicios de aplicación y datos, con dispositivos y procesos de baja latencia administrados localmente. Kubernetes se reservará para una necesidad demostrada de varias sedes o mayor escala. Se probarán restauración de PostgreSQL, recuperación de archivos y sincronización idempotente de resultados.
+The MVP will use containers for application and data services, with devices and low-latency processes managed locally. Kubernetes will be reserved for a demonstrated need across multiple sites or at greater scale. Tests will cover PostgreSQL restoration, file recovery, and idempotent result synchronization.
 
-### 10.2 Identidad, trazabilidad y conservación
+### 10.2 Identity, Traceability, and Retention
 
-Cada centro y curso tendrá permisos propios. Instructor, alumno, administrador y operador dispondrán de funciones distintas. Los datos que salen del centro se minimizarán; vídeo y voz se conservarán solo con finalidad y plazo definidos. La política de retención será una decisión documentada de la entidad según su contexto, sin imponer aquí un plazo universal.
+Each center and course will have its own permissions. Instructors, learners, administrators, and operators will have distinct functions. Data leaving a center will be minimized; video and voice will be retained only for a defined purpose and period. Retention policy will be documented by the organization for its context, without imposing a universal period here.
 
-Se almacenarán versión de escenario y rúbrica, hash de activos, calibración del dispositivo, versiones de modelos y documentos, eventos, decisión del evaluador y motivo de correcciones. Las grabaciones permitirán reconstruir la secuencia; no se promete determinismo bit a bit de GPU, física o inferencia.
+Records will include scenario and rubric versions, asset hashes, device calibration, model and document versions, events, the evaluator’s decision, and reasons for corrections. Recordings will support sequence reconstruction; bit-for-bit determinism of GPU execution, physics, or inference is not promised.
 
-La evaluación no alimentará automáticamente decisiones de contratación, aptitud médica o sanciones laborales. Los participantes podrán revisar sus evidencias y solicitar correcciones al responsable académico.
+Assessment will not automatically feed hiring decisions, medical fitness judgments, or employment sanctions. Participants will be able to review their evidence and request corrections from the academic lead.
 
-## 11. Requisitos verificables y criterios de aceptación
+## 11. Verifiable Requirements and Acceptance Criteria
 
-| ID | Requisito propuesto | Evidencia de aceptación |
+| ID | Proposed requirement | Acceptance evidence |
 |---|---|---|
-| R01 | Sesión completa sin internet | Ejecutar y cerrar un ejercicio local; sincronizar una sola vez al recuperar red |
-| R02 | Escenario identificado y versionado | Recuperar manifiesto, semilla, activos, fuentes y rúbrica de cada sesión |
-| R03 | IA documental trazable | Banco revisado; cada afirmación procedimental evaluada tiene fuente pertinente o abstención |
-| R04 | Separación IA/control | Prueba de permisos demuestra que el LLM no publica comandos de actuador |
-| R05 | Parada háptica independiente | Ensayos instrumentados de fallo y respuesta segura según límites aprobados del dispositivo |
-| R06 | Manejo de pérdida de tracking | Detectar dato inválido, inhibir la interacción afectada y requerir rearme consciente |
-| R07 | Validez del modelo de incendio | Fichas de verificación/validación por caso y límites visibles para el instructor |
-| R08 | Evaluación explicable | Reconstruir cada puntuación desde rúbrica y evidencia; firma del evaluador |
-| R09 | Interoperabilidad espacial | Prueba de unidades, ejes, marcos, latencia y sincronización XR/ROS |
-| R10 | Protección de expedientes | Ensayar acceso entre cursos/sedes y registrar intentos rechazados |
-| R11 | Integración académica | Publicación sin duplicados de resultados y corrección controlada en Moodle |
-| R12 | Transferencia del aprendizaje | Comparar pre/post y retención con estaciones prácticas; informar muestra y límites |
+| R01 | Complete session without internet | Run and close a local exercise; synchronize exactly once when connectivity returns |
+| R02 | Identified, versioned scenario | Retrieve the manifest, seed, assets, sources, and rubric for every session |
+| R03 | Traceable documentary AI | Reviewed question set; every assessed procedural claim has a relevant source or an abstention |
+| R04 | Separation of AI and control | Permission tests demonstrate that the LLM cannot publish actuator commands |
+| R05 | Independent haptic stop | Instrumented fault and safe-response tests against approved device limits |
+| R06 | Tracking-loss handling | Detect invalid data, inhibit the affected interaction, and require deliberate rearming |
+| R07 | Fire-model validity | Case-specific verification/validation records and limitations visible to the instructor |
+| R08 | Explainable assessment | Reconstruct each score from its rubric and evidence; evaluator signature |
+| R09 | Spatial interoperability | Test units, axes, frames, latency, and XR/ROS synchronization |
+| R10 | Protection of learner records | Test access across courses/sites and log denied attempts |
+| R11 | Academic integration | Publish results without duplicates and support controlled corrections in Moodle |
+| R12 | Learning transfer | Compare pre/post performance and retention using practical stations; report sample size and limitations |
 
-Los objetivos numéricos se fijarán antes de las pruebas. Para el tutor se propone como puerta inicial ≥90 % de respuestas correctas y fundamentadas en un banco de al menos 100 casos, con todos los casos críticos revisados. Alcanzar esa meta no constituye una garantía universal. Para percepción se pactarán umbrales por escenario después de medir el baseline; no se inventa una precisión de detección.
+Numerical targets will be fixed before testing. For the tutor, the initial proposed gate is at least 90% correct, evidence-supported responses on a set of at least 100 cases, with every critical case reviewed. Meeting that target is not a universal guarantee. For perception, scenario-specific thresholds will be agreed after measuring the baseline; no detection accuracy is invented here.
 
-Un piloto académico de 12–20 participantes puede servir para detectar problemas de usabilidad y ajustar rúbricas. No bastará por sí solo para afirmar reducción de lesiones o equivalencia con entrenamiento real. La validación física de háptica precede al piloto con usuarios.
+An academic pilot with 12–20 participants can identify usability problems and help refine rubrics. It cannot by itself substantiate claims of reduced injuries or equivalence with live training. Physical validation of haptics precedes the participant pilot.
 
-## 12. Hoja de ruta ejecutable del MVP — 16 semanas
+## 12. Actionable MVP Roadmap — 16 Weeks
 
-| Fase | Semanas | Entregables | Puerta de salida |
+| Phase | Weeks | Deliverables | Exit gate |
 |---|---|---|---|
-| F0. Definición y selección | 1–2 | Perfil de usuario, matriz de competencias, requisitos MBSE, manifiesto de licencias e interfaces | Instructor y responsable técnico aceptan alcance; dependencias del MVP identificadas |
-| F1. Simulación base | 3–5 | Escenario S01, cliente Godot, eventos, consola y caso FDS documentado | Sesión sin háptica de fuerza reproducible y coherente |
-| F2. Háptica inicial | 6–8 | H1, instrumentos inertes, calibración, diagnóstico y registro | Ensayos de fallo aprobados; práctica supervisada con H1 |
-| F3. IA y aprendizaje | 9–11 | Tutor RAG, rúbrica, S02/S03, integración Moodle y reproducción | Evaluación docente del corpus, control de acceso y resultados sin duplicados |
-| F4. Robótica y banco H2 | 12–14 | Robot virtual ROS/Gazebo, adaptador de poses y banco de fuerza opcional | Robot simulado validado; H2 solo pasa a usuarios si supera su revisión mecánica |
-| F5. Piloto y entrega | 15–16 | Prueba académica, correcciones, manuales, copia/restauración y expediente técnico | Instructor acepta piloto; limitaciones y resultados publicados en informe interno |
+| F0. Definition and selection | 1–2 | User profile, competency matrix, MBSE requirements, license manifest, and interfaces | Instructor and technical lead accept the scope; MVP dependencies are identified |
+| F1. Baseline simulation | 3–5 | S01 scenario, Godot client, events, console, and documented FDS case | A reproducible, coherent session without force haptics |
+| F2. Initial haptics | 6–8 | H1, inert instruments, calibration, diagnostics, and records | Fault tests accepted; supervised practice with H1 |
+| F3. AI and learning | 9–11 | RAG tutor, rubric, S02/S03, Moodle integration, and replay | Instructor review of the corpus, access controls, and duplicate-free results |
+| F4. Robotics and H2 bench | 12–14 | ROS/Gazebo virtual robot, pose adapter, and optional force bench | Virtual robot validated; H2 reaches participants only after passing its mechanical review |
+| F5. Pilot and handover | 15–16 | Academic pilot, corrections, manuals, backup/restoration, and technical records | Instructor accepts the pilot; limitations and results documented in an internal report |
 
-La ruta crítica es la validación de escenarios y el banco físico. Si H2 no está listo, el MVP se entrega con H1 y se identifica claramente que la simulación de fuerza sigue pendiente. Las 16 semanas no incluyen desarrollar un robot contra incendios certificado ni impartir todo el itinerario académico de 18 semanas.
+The critical path is scenario validation and the physical bench. If H2 is not ready, the MVP is delivered with H1 and explicitly identifies force simulation as pending. The 16 weeks do not include developing a certified firefighting robot or delivering the entire 18-week academic pathway.
 
-### Equipo y esfuerzo
+### Team and Effort
 
-Propuesta de equipo con cinco funciones técnicas: arquitectura/backend, XR, robótica/háptica, IA/datos y pruebas/operación. Añadir un especialista en incendios y un responsable académico de seguridad privada con dedicación planificada. Se admite que algunas funciones se combinen si se mantiene revisión competente de los elementos físicos.
+The proposed team has five technical functions: architecture/backend, XR, robotics/haptics, AI/data, and testing/operations. A fire specialist and an academic lead for private security should also have planned time allocations. Some functions may be combined if competent review of physical components is maintained.
 
-Como estimación de planificación, cinco dedicaciones técnicas durante 16 semanas equivalen a 80 persona-semanas, más docencia, revisión especializada y tiempo de fabricación. Esta cifra es un supuesto de capacidad, no una cotización. El presupuesto se calculará con tarifas acordadas, equipos, fabricación, mantenimiento, seguros o autorizaciones aplicables y contingencias identificadas.
+As a planning estimate, five full-time technical allocations over 16 weeks equal 80 person-weeks, plus teaching, specialist review, and fabrication time. This is a capacity assumption, not a quotation. The budget will use agreed rates, equipment, fabrication, maintenance, applicable insurance or authorizations, and identified contingencies.
 
-### Backlog inicial priorizado
+### Prioritized Initial Backlog
 
-| Prioridad | Trabajo | Dependencia |
+| Priority | Work item | Dependency |
 |---|---|---|
-| P0 | Catálogo de competencias y criterios críticos por perfil | Instructor y plan del establecimiento |
-| P0 | Manifiesto de escena y contrato de eventos | Arquitectura de datos |
-| P0 | S01 interactivo con evaluación por reglas | Activos y caso físico revisados |
-| P0 | Instrumento H1 con registro y manejo de fallos | Protocolo y hardware seleccionados |
-| P0 | Tutor documental con corpus aprobado | Permisos y materiales docentes |
-| P0 | Consola, reproducción y calificación firmada | Eventos y rúbrica |
-| P1 | S02/S03 e integración Moodle | Base del simulador y servicios externos |
-| P1 | Robot virtual y teleoperación | Pareja ROS/Gazebo fijada y marcos espaciales |
-| P2 | Banco H2 y modelos reducidos adaptativos | Validación mecánica y física específica |
-| P2 | Flota, demostraciones y políticas aprendidas | Interfaces y evidencia del piloto |
+| P0 | Competency catalog and profile-specific critical criteria | Instructor and facility plan |
+| P0 | Scene manifest and event contract | Data architecture |
+| P0 | Interactive S01 with rule-based assessment | Reviewed assets and physical case |
+| P0 | H1 instrument with recording and fault handling | Selected protocol and hardware |
+| P0 | Document tutor with an approved corpus | Permissions and teaching materials |
+| P0 | Console, replay, and signed assessment | Events and rubric |
+| P1 | S02/S03 and Moodle integration | Simulator baseline and external services |
+| P1 | Virtual robot and teleoperation | Fixed ROS/Gazebo pairing and coordinate frames |
+| P2 | H2 bench and adaptive reduced-order models | Specific mechanical and physical validation |
+| P2 | Fleet, demonstrations, and learned policies | Interfaces and pilot evidence |
 
-## 13. Organización propuesta para el repositorio
+## 13. Proposed Repository Organization
 
-Los siguientes son destinos sugeridos para una futura incorporación. Los entregables de esta propuesta no modifican el repositorio remoto.
+The following are suggested destinations for future incorporation. The deliverables for this proposal do not modify the remote repository.
 
-| Ruta propuesta | Contenido |
+| Proposed path | Content |
 |---|---|
-| `README.md` | Visión, alcance, arquitectura resumida y guía de navegación |
-| `docs/architecture/` | Decisiones, contratos, despliegue y límites de integración |
-| `docs/training/` | Mallas, rúbricas y guías del instructor |
-| `MBSE/requirements/` | Requisitos, trazabilidad y verificaciones |
-| `MBSE/CAD/` | Instrumentos inertes, estación y documentación de hardware |
-| `MBSE/CAM/` | Fabricación, montaje y control de revisiones |
-| `MBSE/CAS/Drawio/` | Diagramas editables de arquitectura y evolución |
-| `MBSE/CAS/fds/` | Casos físicos, parámetros y reportes de validación |
-| `simulator/godot/` | Cliente XR, escenas y adaptadores |
-| `robotics/` | Paquetes ROS 2, modelos y contratos de control |
-| `haptics/` | Controladores, perfiles, calibraciones y pruebas del banco |
-| `services/` | Sesiones, IA, evaluación, datos e integración académica |
-| `tests/acceptance/` | Evidencias ligadas a R01–R12 |
-| `deploy/` | Contenedores, configuración y recuperación |
-| `third_party/manifest.yaml` | Origen, commit, licencia y estado de cada dependencia |
+| `README.md` | Vision, scope, architecture overview, and navigation guide |
+| `docs/architecture/` | Decisions, contracts, deployment, and integration boundaries |
+| `docs/training/` | Curricula, rubrics, and instructor guides |
+| `MBSE/requirements/` | Requirements, traceability, and verification |
+| `MBSE/CAD/` | Inert training instruments, station, and hardware documentation |
+| `MBSE/CAM/` | Fabrication, assembly, and revision control |
+| `MBSE/CAS/Drawio/` | Editable architecture and evolution diagrams |
+| `MBSE/CAS/fds/` | Physical cases, parameters, and validation reports |
+| `simulator/godot/` | XR client, scenes, and adapters |
+| `robotics/` | ROS 2 packages, models, and control contracts |
+| `haptics/` | Controllers, profiles, calibration records, and bench tests |
+| `services/` | Sessions, AI, assessment, data, and academic integration |
+| `tests/acceptance/` | Evidence linked to R01–R12 |
+| `deploy/` | Containers, configuration, and recovery |
+| `third_party/manifest.yaml` | Origin, commit, license, and status of every dependency |
 
-Arcadia/Capella, ya mencionado por el proyecto, puede organizar necesidades operativas, funciones, componentes lógicos y asignación física. Cada requisito deberá vincularse con un componente, una competencia y una prueba. El draw.io adjunto comunica esas vistas; no se presenta como un modelo Capella ejecutable.
+Arcadia/Capella, already mentioned by the project, can organize operational needs, functions, logical components, and physical allocation. Each requirement should be linked to a component, a competency, and a test. The companion draw.io file communicates these views; it is not presented as an executable Capella model.
 
-## 14. Política de software libre y decisiones pendientes
+## 14. Free Software Policy and Pending Decisions
 
-| Componente verificado | Licencia/fuente consultada | Decisión |
+| Verified component | License/source consulted | Decision |
 |---|---|---|
-| Godot | MIT, [página oficial](https://godotengine.org/license/) | Motor XR principal; conservar avisos y revisar activos |
-| FDS/Smokeview | Dominio público según [NIST](https://pages.nist.gov/fds-smv/) | Referencia física; conservar procedencia y límites |
-| CHAI3D | BSD de tres cláusulas según [página oficial](https://www.chai3d.org/download/license) | Candidato de renderizado de fuerza; revisar SDK del dispositivo por separado |
-| SenseShift firmware | GPL-3.0 declarada en [README](https://github.com/senseshift/senseshift-firmware) | Mantener condiciones de distribución y revisar hardware/dependencias |
-| BeaVR backend | MIT en [LICENSE consultado](https://github.com/ARCLab-MIT/beavr-bot/blob/main/LICENSE) | Revisar app y activos de manera independiente |
-| XTDrone2 | MIT declarada en [README](https://github.com/andy-zhuo-02/XTDrone2) | Investigación hasta verificar compatibilidad |
-| Qwen3-8B | Pesos Apache 2.0 según [publicación oficial](https://qwenlm.github.io/blog/qwen3/) | Modelo candidato; fijar archivo, revisión y cuantización |
-| Moodle | GPLv3 según [README](https://github.com/moodle/moodle) | Plataforma académica autohospedada |
+| Godot | MIT, [official page](https://godotengine.org/license/) | Main XR engine; preserve notices and review assets |
+| FDS/Smokeview | Public domain according to [NIST](https://pages.nist.gov/fds-smv/) | Physical reference; preserve provenance and limitations |
+| CHAI3D | Three-clause BSD according to the [official page](https://www.chai3d.org/download/license) | Force-rendering candidate; review the device SDK separately |
+| SenseShift firmware | GPL-3.0 stated in the [README](https://github.com/senseshift/senseshift-firmware) | Preserve distribution conditions and review hardware/dependencies |
+| BeaVR backend | MIT in the [reviewed LICENSE](https://github.com/ARCLab-MIT/beavr-bot/blob/main/LICENSE) | Review app and assets independently |
+| XTDrone2 | MIT stated in the [README](https://github.com/andy-zhuo-02/XTDrone2) | Research until compatibility is verified |
+| Qwen3-8B | Apache 2.0 weights according to the [official publication](https://qwenlm.github.io/blog/qwen3/) | Candidate model; fix the file, revision, and quantization |
+| Moodle | GPLv3 according to the [README](https://github.com/moodle/moodle) | Self-hosted academic platform |
 
-Para el código nuevo se propone una licencia abierta definida por el titular después de revisar cómo se distribuyen los componentes. No se aplica una licencia única al material de terceros. «Código visible», «gratuito», «pesos abiertos» y «software libre» no se usarán como sinónimos.
+For new code, an open license should be selected by the rights holder after reviewing how the components are distributed. A single license is not applied to third-party material. “Visible source code,” “free of charge,” “open weights,” and “free software” will not be treated as synonyms.
 
-El objetivo de una cadena abierta requiere revisar también runtime del visor, firmware, controladores GPU, modelos 3D, voces, datasets y manuales incorporados al RAG. OpenXR es una interfaz; su uso no implica que cualquier runtime o dispositivo sea libre. Las dependencias comerciales o restringidas se declararán y se ofrecerán alternativas cuando exista una combinación compatible.
+An open execution chain also requires reviewing the headset runtime, firmware, GPU drivers, 3D models, voices, datasets, and manuals incorporated into RAG. OpenXR is an interface; using it does not imply that every runtime or device is free software. Commercial or restricted dependencies will be disclosed, with alternatives offered where a compatible combination exists.
 
-Antes de comenzar F1 quedan cinco decisiones concretas: recinto piloto y perfil del alumno; hardware H1; conjunto de documentos autorizados; entidad académica responsable; y versiones/licencias del pequeño subconjunto de repositorios que realmente entre en el MVP. Los proyectos de flota y humanoides pendientes de identificación no bloquean ese inicio.
+Five concrete decisions remain before F1: the pilot facility and learner profile; H1 hardware; the authorized document set; the responsible academic organization; and the versions/licenses of the small subset of repositories actually entering the MVP. Fleet and humanoid projects awaiting identification do not block that start.
 
-## 15. Índice de fuentes primarias
+## 15. Primary Source Index
 
-Las fuentes se enlazan junto a las afirmaciones que respaldan. Este índice facilita su consulta; no implica que sus autores avalen la propuesta.
+Sources are linked next to the statements they support. This index facilitates consultation; it does not imply that the source authors endorse the proposal.
 
-| Área | Fuentes |
+| Area | Sources |
 |---|---|
-| Compendio y estado inicial | [README fijado a la revisión](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/README.md), [diagrama existente](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/MBSE/CAS/Drawio/humanoid-platform.drawio) |
-| Drones y robótica | [XTDrone](https://github.com/robin-shaun/XTDrone), [XTDrone2](https://github.com/andy-zhuo-02/XTDrone2), [ROS/Gazebo](https://gazebosim.org/docs/harmonic/ros_installation/), [MoveIt 2](https://moveit.picknik.ai/main/index.html) |
-| Teleoperación | [BeaVR](https://github.com/ARCLab-MIT/beavr-bot), [candidato Prometheus-telos](https://github.com/sdk2035/Prometheus-telos) |
-| Háptica y XR | [SenseShift](https://github.com/senseshift/senseshift-firmware), [CHAI3D haptics](https://www.chai3d.org/download/doc/html/chapter17-haptics.html), [Godot XR](https://docs.godotengine.org/en/stable/tutorials/xr/index.html) |
-| Simulación de incendios | [NIST FDS/Smokeview](https://www.nist.gov/services-resources/software/fds-and-smokeview), [documentación y estado FDS-SMV](https://pages.nist.gov/fds-smv/) |
-| IA y conocimiento | [Qwen3](https://qwenlm.github.io/blog/qwen3/), [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview), [Qdrant](https://qdrant.tech/documentation/) |
-| Formación | [Moodle](https://github.com/moodle/moodle), [servicios externos](https://moodledev.io/docs/4.5/apis/subsystems/external), [FEMA ICS 100](https://training.fema.gov/programs/independent-study/courseoverview.aspx?code=IS-100.c&lang=en), [ficha SUCAMEC de centros autorizados](https://www.gob.pe/institucion/sucamec/informes-publicaciones/4764413-departamentos-de-capacitacion-o-centros-de-formacion-y-especializacion-en-seguridad-privada-cefoesp-autorizados-por-sucamec) |
+| Compendium and starting state | [README pinned to the reviewed revision](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/README.md), [existing diagram](https://github.com/robotics-intelligent-systems/jfxai4rffs/blob/8f8524616b3c07108f7b9f8255ac0cc9f5308e00/MBSE/CAS/Drawio/humanoid-platform.drawio) |
+| Drones and robotics | [XTDrone](https://github.com/robin-shaun/XTDrone), [XTDrone2](https://github.com/andy-zhuo-02/XTDrone2), [ROS/Gazebo](https://gazebosim.org/docs/harmonic/ros_installation/), [MoveIt 2](https://moveit.picknik.ai/main/index.html) |
+| Teleoperation | [BeaVR](https://github.com/ARCLab-MIT/beavr-bot), [Prometheus-telos candidate](https://github.com/sdk2035/Prometheus-telos) |
+| Haptics and XR | [SenseShift](https://github.com/senseshift/senseshift-firmware), [CHAI3D haptics](https://www.chai3d.org/download/doc/html/chapter17-haptics.html), [Godot XR](https://docs.godotengine.org/en/stable/tutorials/xr/index.html) |
+| Fire simulation | [NIST FDS/Smokeview](https://www.nist.gov/services-resources/software/fds-and-smokeview), [FDS-SMV documentation and status](https://pages.nist.gov/fds-smv/) |
+| AI and knowledge | [Qwen3](https://qwenlm.github.io/blog/qwen3/), [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview), [Qdrant](https://qdrant.tech/documentation/) |
+| Training | [Moodle](https://github.com/moodle/moodle), [external services](https://moodledev.io/docs/4.5/apis/subsystems/external), [FEMA ICS 100](https://training.fema.gov/programs/independent-study/courseoverview.aspx?code=IS-100.c&lang=en), [SUCAMEC listing of authorized centers](https://www.gob.pe/institucion/sucamec/informes-publicaciones/4764413-departamentos-de-capacitacion-o-centros-de-formacion-y-especializacion-en-seguridad-privada-cefoesp-autorizados-por-sucamec) |
