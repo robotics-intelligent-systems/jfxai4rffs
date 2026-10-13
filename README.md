@@ -4,7 +4,11 @@
 
 **Reference repository:** [robotics-intelligent-systems/jfxai4rffs](https://github.com/robotics-intelligent-systems/jfxai4rffs). Reviewed revision: `8f8524616b3c07108f7b9f8255ac0cc9f5308e00`.
 
-**Scope of this consolidated edition:** the software compendium, AI integration architecture, virtual haptic firefighting simulator, professional curricula, verification requirements, and implementation roadmap are brought together in this document. The companion file, `jfxai4rffs-ai-haptic-architecture-EN.drawio`, contains four editable tabs: integrated architecture, haptic simulator, professional training, and MVP evolution. The decisions, training hours, performance targets, and schedules below are design proposals; they do not describe an existing implementation or an accreditation already obtained. This English edition preserves the technical and academic scope of the Spanish proposal and the sources reviewed for that proposal.
+**Scope of this consolidated edition:** the software compendium, AI integration architecture, virtual haptic firefighting simulator, professional curricula, verification requirements, and implementation roadmap are brought together in this document. The companion file, [`MBSE/CAS/Drawio/ai-haptic-architecture.drawio`](MBSE/CAS/Drawio/ai-haptic-architecture.drawio), contains four editable tabs: integrated architecture, haptic simulator, professional training, and MVP evolution. The decisions, training hours, performance targets, and schedules below are design proposals; they do not describe an existing implementation or an accreditation already obtained. This English edition preserves the technical and academic scope of the Spanish proposal and the sources reviewed for that proposal.
+
+## Current hardware concepts · 13 October 2026
+
+The [CAD catalog](MBSE/CAD/README.md) now contains the **OpenTwin modular protected truck**, transferred from `jfxai4mass`, and **hydrogen-hybrid amphibious transport**, transferred from `jfxmbdss`. [Corresponding requirements](docs/requirements/emergency-response-support-concepts.md) preserve ARM-01–06, allocate COM-01–09 and add HAT-01–08, with [editable Draw.io views](MBSE/CAS/Drawio/README.md). These are proposed emergency-response logistics and training twins; vehicle implementation and validation remain pending and outside the simulator MVP.
 
 ## 1. Executive Proposal
 
@@ -388,7 +392,7 @@ As a planning estimate, five full-time technical allocations over 16 weeks equal
 
 ## 13. Proposed Repository Organization
 
-The following are suggested destinations for future incorporation. The deliverables for this proposal do not modify the remote repository.
+The following are suggested destinations for future incorporation. The concept baseline linked above is present in this repository; the application destinations below remain proposals.
 
 | Proposed path | Content |
 |---|---|

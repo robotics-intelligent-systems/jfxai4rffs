@@ -1,0 +1,62 @@
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="hat-scope" name="Scope and provenance">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="920">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="scope" value="Hydrogen-hybrid amphibious transport | JFXAI4RFFS&lt;br&gt;Migrated from jfxmbdss on 13 Oct 2026.&lt;br&gt;Source: MBSE/CAD/hydrogen-hybrid-amphibious-transport-concept.jpg&lt;br&gt;High wing, cargo fuselage, four electric nacelles, twin floats; gaseous H2, fuel cell and buffer battery.&lt;br&gt;Apply COM-01–09. Proposed concept only; limits, geometry and evidence pending." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="40" width="740" height="350" />
+        </mxCell>
+        <mxCell id="integration" value="Mission/cargo configuration → versioned aircraft twin → supervised instructor console and training services.&lt;br&gt;Separate airframe, flight, floats, hydrogen, energy and thermal models.&lt;br&gt;No aircraft controller or suppression capability is implemented by this diagram." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="40" width="740" height="350" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="hat-requirements" name="Requirements">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="1660">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HAT-01" value="HAT-01 | Mission and loading envelope&lt;br&gt;The aircraft concept shall define cargo, crew, mass/CG, ground, flight and water operating envelopes.&lt;br&gt;Acceptance: Review configuration-specific payload, mass/CG and environmental limits before model verification.&lt;br&gt;Allocation: Mission / configuration" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="40" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-02" value="HAT-02 | Airframe and cargo retention&lt;br&gt;The airframe, floats and cargo restraints shall withstand the selected operational and emergency load cases.&lt;br&gt;Acceptance: Analyze structure, float attachments and cargo retention against approved load cases.&lt;br&gt;Allocation: Airframe / cargo" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="40" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-03" value="HAT-03 | Flight dynamics&lt;br&gt;The configured aircraft shall meet defined aerodynamic, propulsion and handling targets.&lt;br&gt;Acceptance: Run reproducible aerodynamic and flight-dynamics cases with fixed geometry and mass/CG; correlate before physical claims.&lt;br&gt;Allocation: Flight model" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="420" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-04" value="HAT-04 | Flotation and water transition&lt;br&gt;The twin-float configuration shall meet approved buoyancy, stability and water-transition criteria.&lt;br&gt;Acceptance: Analyze displacement, trim, stability and hydrodynamic loads for each loading case; evaluate transition guards.&lt;br&gt;Allocation: Floats / hydrodynamics" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="420" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-05" value="HAT-05 | Gaseous hydrogen isolation&lt;br&gt;The energy configuration shall model gaseous hydrogen storage, leak detection, ventilation and isolation.&lt;br&gt;Acceptance: Review tank packaging and hazard cases; inject leak and sensor faults into an isolated model and verify local response.&lt;br&gt;Allocation: Hydrogen / safety" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="800" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-06" value="HAT-06 | Hybrid energy and cooling&lt;br&gt;The fuel-cell and buffer-battery system shall supply propulsion and essential loads within its approved power, thermal and reserve budgets.&lt;br&gt;Acceptance: Reproduce mission energy and cooling cases including fuel-cell loss and battery limits.&lt;br&gt;Allocation: Energy / thermal" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="800" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-07" value="HAT-07 | Supervised mission interfaces&lt;br&gt;The concept twin shall exchange versioned mission, cargo and state records with the instructor and robotic-training services.&lt;br&gt;Acceptance: Replay authorized, stale and conflicting commands; verify local authority and asset/configuration identity.&lt;br&gt;Allocation: Twin / mission services" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1180" width="740" height="350" />
+        </mxCell>
+        <mxCell id="HAT-08" value="HAT-08 | Occupant and recovery scenarios&lt;br&gt;The concept shall define access, emergency egress and recovery scenarios for each occupied configuration.&lt;br&gt;Acceptance: Review access and evacuation scenarios against defined occupants, cargo and ground/water conditions.&lt;br&gt;Allocation: Human factors / recovery" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="1180" width="740" height="350" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="hat-acceptance" name="Acceptance parameters">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="920">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="open" value="TBD: dimensions; cargo and crew; mass/CG; load cases; flight and water limits; H2 pressure/volume; fuel-cell and battery ratings; cooling and reserves.&lt;br&gt;Assign owners and measurable limits before verification." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="40" width="740" height="350" />
+        </mxCell>
+        <mxCell id="evidence" value="Need → COM/HAT ID → configured subsystem → scenario → versioned evidence → review disposition.&lt;br&gt;Proposed: FreeCAD/OpenVSP, OpenModelica, JSBSim, OpenFOAM and Godot. Tool selection and integration remain pending.&lt;br&gt;No measured performance, certification or executable SysML model is asserted." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=18;fontSize=16;fillColor=#ffffff;strokeColor=#bac9d8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="820" y="40" width="740" height="350" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
